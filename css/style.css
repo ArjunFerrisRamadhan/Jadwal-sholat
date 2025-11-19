@@ -1,0 +1,362 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: #000;
+    color: white;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Background Carousel */
+.background-carousel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.bg-image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.bg-image.active {
+    opacity: 0.7;
+}
+
+/* ===== JADWAL ===== */
+header {
+  background-color: #1e3a8a; /* biru tua */
+  padding: 30px 50px;
+  border-radius: 0 0 80px 80px;
+  color: white;
+  position: relative; /* penting biar .tanggal-box ngikut header */
+}
+
+.header-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 150px;   /* ukuran logo */
+  width: auto;
+}
+
+.nama-masjid {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 85px;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+#current-time {
+  font-size: 75px;  
+  font-weight: bold;
+  color: yellow;
+}
+
+.tanggal-box {
+    background: #f7ae0b;
+    padding: 10px 20px;
+    border-radius: 25px;     /* biar lebih lonjong */
+    font-weight: bold;
+    text-align: center;
+    color: #000;
+    position: absolute;      /* posisinya mutlak */
+    left: 50%;               /* taruh di tengah */
+    transform: translate(-50%, 50%); /* geser ke tengah + turun setengah */
+    cursor: pointer;
+    user-select: none;
+}
+
+.tanggal-box:hover {
+    background: #e69e00;
+}
+
+/* ===== JADWAL ===== */
+#jadwal-container {
+  display: flex;
+  flex-direction: column; /* sekarang tiap baris diatur manual */
+  gap: 100px; /* jarak antar baris */
+  margin: 40px auto;
+  padding: 100px 80px;
+}
+
+/* ===== Baris 1 ===== */
+.baris {
+  display: flex;
+  justify-content: space-between; /* kiri & kanan */
+  gap: 20px; /* jarak antar kolom di baris */
+}
+
+/* Kolom umum */
+.kolom {
+  background: #1e3c72; /* biar tetap default biru */
+  border-radius: 20px;
+  padding: 20px 30px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-width: 220px;
+  max-width: 250px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+}
+
+/* Waktu */
+.waktu {
+  display: flex;
+  justify-content: space-between; /* label kiri, jam kanan */
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgb(247, 174, 11);
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Label & Jam */
+.label { font-weight: bold; font-size: 20px; color: #fff; }
+.jam { font-weight: bold; font-size: 20px; color: #fff; }
+
+/* Responsive */
+@media(max-width: 700px) {
+  .baris {
+    flex-direction: column;
+    align-items: center;
+  }
+  .kolom { width: 90%; max-width: none; }
+}
+
+/* ===== FOOTER MARQUEE ===== */
+#marquee {
+  position: fixed;         /* biar selalu nempel bawah layar */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.7); /* transparan hitam biar elegan */
+  padding: 10px 0;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 1000;           /* biar gak ketutup elemen lain */
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.4);
+}
+
+#marquee marquee {
+  color: #fff;          /* warna teks oranye biar nyala */
+  font-family: Arial, sans-serif;
+  letter-spacing: 2px;
+}
+
+/* IQOMAH MODE (overlay fullscreen) */
+#iqomah-mode {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.75); /* transparan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* pastikan di atas elemen lain */
+    transition: opacity 0.5s ease-in-out;
+}
+
+#iqomah-mode.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Konten kotak di tengah */
+.iqomah-box {
+    background: rgba(20,20,20,0.85);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    color: #fff;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    animation: zoomIn 0.6s ease;
+}
+
+.iqomah-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #f7ae0b;
+    margin-bottom: 20px;
+}
+
+/* Countdown biar smooth */
+#countdown {
+  font-family: "Courier New", monospace; /* biar angka stabil */
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ffcc00;
+  background: #111;
+  padding: 15px 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+  transition: all 0.2s ease-in-out; /* bikin smooth pas berubah */
+}
+
+#hadis-text {
+    font-size: 1.3rem;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+#hadis-meaning {
+    font-size: 1rem;
+    margin-top: 5px;
+    color: #ddd;
+}
+
+.hadis-source {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #f7ae0b;
+    font-style: italic;
+}
+
+/* Media */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px 15px;
+    min-height: 220px; /* agak tinggi biar lega */
+    justify-content: center;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px; /* jarak antar elemen */
+  }
+
+  .logo {
+    max-width: px;
+    max-height: 80px;
+    margin-top: -25px;
+  }
+
+  .nama-masjid {
+    font-size: 30px;
+    line-height: 1.3;
+    margin-top: 50px;
+  }
+
+  #current-time {
+    font-size: 30px;
+    margin-top: 8px;
+    font-weight: bold;
+    margin-top: 72px;
+  }
+
+  .tanggal-box {
+    font-size: 1rem;
+    padding: 10px 18px;
+    margin-top: 12px;
+  }
+}
+
+/* ===== MODAL PENCARIAN — STYLE BARU ===== */
+#search-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.3s ease;
+}
+
+.search-modal-content {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.search-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+#search-input {
+    flex: 1;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+#search-input:focus {
+    border-color: #1e3a8a;
+}
+
+#search-btn {
+    padding: 10px 15px;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#search-btn:hover {
+    background: #1e3c72;
+}
+
+.search-results {
+    max-height: 300px;
+    overflow-y: auto;
+    border-top: 1px solid #eee;
+    margin-top: 10px;
+}
+
+.search-result-item {
+    padding: 12px 15px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    margin: 5px 0;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-weight: bold; /* NAMA KOTA JADI TEBAL */
+    color: #000;       /* NAMA KOTA JADI HITAM */
+    font-size: 16px;
+}
+
+.search-result-item:hover {
+    background: #e0e0e0;
+}

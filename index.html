@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waktu Sholat</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <!-- Background Gambar Masjid -->
+  <div class="background-carousel">
+    <img src="https://binaqurani.sch.id/wp-content/uploads/2024/09/Fasilitas-BQ-Islamic-Boarding-School.webp  " alt="Masjid 1" class="bg-image active">
+    <img src="https://binaqurani.sch.id/wp-content/uploads/2024/08/Masjid-Bina-Qurani-Islamic-Boarding-School.jpg  " alt="Masjid 2" class="bg-image">
+    <img src="https://binaqurani.sch.id/wp-content/uploads/2024/10/Gerbang-BQ-Islamic-Boarding-School.webp  " alt="Masjid 3" class="bg-image">
+    <img src="https://binaqurani.sch.id/wp-content/uploads/2024/07/BQ-Arena-Islamic-Boarding-School-Kota-Bogor4-1.jpg  " alt="Masjid 4" class="bg-image">
+    <img src="https://binaqurani.sch.id/wp-content/uploads/2024/07/Fasilitas-BQ-Islamic-Boarding-School-Kota-Bogor-2.jpg  " alt="Masjid 5" class="bg-image">
+    <img src="https://binaqurani.sch.id/wp-content/uploads/2024/09/Fasilitas-BQ-Islamic-Boarding-School-Kota-Bogor.webp  " alt="Masjid 6" class="bg-image">
+    <img src="https://binaqurani.sch.id/wp-content/uploads/2024/07/Fasilitas-BQ-Islamic-Boarding-School-Kota-Bogor-5.jpg  " alt="Masjid 7" class="bg-image">
+  </div>
+
+  <!-- Mode Normal -->
+  <div id="normal-mode" class="mode">
+    <header>
+      <div class="header-content">
+        <img src="/Gambar/Logo-BQ-Islamic-Boarding-School-2.png" alt="Logo" class="logo">
+        <h1 class="nama-masjid">Bina Qurani Mosque</h1>
+        <div id="current-time">00:00:00</div>
+      </div>
+      <div id="tanggal-box" class="tanggal-box">Bogor, Sabtu, 25 Oktober 2025 | 3 Jumadil Awal 1447 H 🔍</div>
+    </header>
+
+    <main>
+      <!-- Jadwal Sholat -->
+      <div id="jadwal-container">
+
+        <!-- Baris 1 -->
+        <div class="baris">
+          <div class="kolom kiri">
+            <div class="waktu">
+              <span class="label">Subuh</span>
+              <span class="jam" id="subuh">04:36</span>
+            </div>
+          </div>
+          <div class="kolom kanan">
+            <div class="waktu">
+              <span class="label">Ashar</span>
+              <span class="jam" id="ashar">15:11</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Baris 2 -->
+        <div class="baris">
+          <div class="kolom kiri">
+            <div class="waktu">
+              <span class="label">Syuruq</span>
+              <span class="jam" id="syuruq">05:50</span>
+            </div>
+          </div>
+          <div class="kolom kanan">
+            <div class="waktu">
+              <span class="label">Maghrib</span>
+              <span class="jam" id="maghrib">17:59</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Baris 3 -->
+        <div class="baris">
+          <div class="kolom kiri">
+            <div class="waktu">
+              <span class="label">Zuhur</span>
+              <span class="jam" id="zuhur">11:55</span>
+            </div>
+          </div>
+          <div class="kolom kanan">
+            <div class="waktu">
+              <span class="label">Isya</span>
+              <span class="jam" id="isya">19:04</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer Marquee -->
+    <footer id="marquee">
+      <marquee behavior="scroll" direction="left" scrollamount="5">
+        BQ City: Jl. Pinus, RT.01/RW.09, Situgede, Kec. Bogor Bar., Kota Bogor, Jawa Barat 16115
+      </marquee>
+    </footer>
+  </div>
+
+  <!-- Iqomah Mode (overlay) -->
+  <div id="iqomah-mode" class="hidden">
+    <div class="iqomah-box">
+      <div class="iqomah-title">MEMASUKI WAKTU IQOMAH</div>
+      <div id="countdown">15:00</div>
+      <div id="hadis-text"></div>
+      <div id="hadis-meaning">Arti hadis tampil di sini...</div>
+      <div class="hadis-source">(HR. ...)</div>
+    </div>
+  </div>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>
